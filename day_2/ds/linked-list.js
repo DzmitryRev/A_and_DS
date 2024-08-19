@@ -1,12 +1,3 @@
-// class LinkedListNode<T> {
-//     value: T;
-//     next: LinkedListNode<T> | null;
-//     constructor(value: T, next: LinkedListNode<T> | null) {
-//         this.value = value;
-//         this.next = next;
-//     }
-// }
-
 class LinkedListNode {
     constructor(value, next = null) {
         this.value = value;
