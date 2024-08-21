@@ -115,3 +115,5 @@ class LinkedList {
         return arr;
     }
 }
+
+export default LinkedList;
