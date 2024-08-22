@@ -10,6 +10,7 @@ class HashTable {
         this.keys = {};
     }
 
+    // Хеш функция - принимает ключ - возвращает номер в массиве
     hash(key) {
         const hash = Array.from(key).reduce(
             (hashAccumulator, keySymbol) => hashAccumulator + keySymbol.charCodeAt(0),
@@ -18,6 +19,10 @@ class HashTable {
         return hash % this.buckets.length;
     }
 
+    // Принимает ключ и значение
+    // 1. Хеширует ключ;
+    // 2. Сохраняет хешировнный ключ в объект keys (ключ : хешированный ключ)
+    // 3. В buckets ищет linked list под ключом hashedKey, если не находит помещает в linked list значение, если находит - изменяет.
     set(key, value) {
         const keyHash = this.hash(key);
         this.keys[key] = keyHash;
@@ -29,12 +34,19 @@ class HashTable {
             node.value.value = value;
         }
     }
+    // Принимает ключ
+    // 1. В buckets ищет linked list под хешированным ключом;
+    // 2. Ищет в данном linked list требуемое значение и взращает его, иначе undefined.
     get(key) {
         const bucketLinkedList = this.buckets[this.hash(key)];
         const node = bucketLinkedList.find({ callback: (nodeValue) => nodeValue.key === key });
 
         return node ? node.value.value : undefined;
     }
+    // Принимает ключ
+    // 1. Удаляет ключ из массива keys;
+    // 2. В buckets ищет linked list под хешированным ключом;
+    // 3. Ищет в данном linked list требуемое значение и удаляет его.
     delete(key) {
         const keyHash = this.hash(key);
         delete this.keys[key];
