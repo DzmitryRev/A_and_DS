@@ -1,4 +1,4 @@
-import LinkedList from "../../day_2/ds/linked-list";
+import LinkedList from "./linked-list";
 
 const HASH_TABLE_SIZE = 32;
 
