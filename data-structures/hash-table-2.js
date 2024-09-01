@@ -1,6 +1,3 @@
-// 1. Для начала требуется хорошая хеш-функция;
-// Для создания хорошей хеш-функции будем использовать полиномиальные хеши;
-
 function hash(str) {
     let hash = 0;
     for (let charIndex = 0; charIndex < str.length; charIndex++) {
@@ -9,10 +6,7 @@ function hash(str) {
     return hash;
 }
 
-// 2. За основу хеш-таблицы принимается массив;
 let data = [];
-
-// 3. В первом случае для разрешения коллизий использовать связный список внутри свойств хеш-таблицы;
 
 class LinkedListNode {
     constructor(value, next = null) {
